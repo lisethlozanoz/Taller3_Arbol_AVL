@@ -1,3 +1,6 @@
+//Taller 3
+//Integrantes: Manuela Garc√≠a, Luisa Vargas y Liseth Lozano
+
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -63,7 +66,7 @@ int main()
         if(letra == "E")
             rootAVL = eliminarNodoAVL(rootAVL, numero);
 
-        contador++; //Cu·ntos datos hay en total
+        contador++; //Cu√°ntos datos hay en total
     }
 
     cout<<"El valor de la mediana es: "<<mediana(rootAVL, contador)<<endl;
@@ -82,7 +85,7 @@ int maximo(int a, int b)
         return b;
 }
 
-//FunciÛn que retorna el valor de la altura del ·rbol.
+//Funci√≥n que retorna el valor de la altura del √°rbol.
 
 int altura(NodeAVL *nod)
 {
@@ -92,11 +95,11 @@ int altura(NodeAVL *nod)
     return nod->altura; //Si existe el nodo, retorna el valor almacenado en altura del nodo.
 }
 
-//FunciÛn que crea un nuevo nodo con el valor recibido.
+//Funci√≥n que crea un nuevo nodo con el valor recibido.
 
 NodeAVL* nuevoNodeAVL(int valor)
 {
-    NodeAVL* nodo = new NodeAVL(); //Crea un nuevo nodo del tipo ·rbol AVL.
+    NodeAVL* nodo = new NodeAVL(); //Crea un nuevo nodo del tipo √°rbol AVL.
     nodo->data = valor; //Guarda el valor dentro de la variable data del nodo.
     nodo->left = nullptr; //Inicializa los punteros a derecha e izquierda con 0.
     nodo->right = nullptr;
@@ -104,23 +107,23 @@ NodeAVL* nuevoNodeAVL(int valor)
     return (nodo);
 };
 
-//Calcula el factor del balance dentro del ·rbol AVL. Est· definido como la diferencia entre la altura del sub·rbol izquierdo y la altura del sub·rbol derecho.
+//Calcula el factor del balance dentro del √°rbol AVL. Est√° definido como la diferencia entre la altura del sub√°rbol izquierdo y la altura del sub√°rbol derecho.
 
 int getBalance(NodeAVL *nod)
 {
-    if(nod == NULL) //Revisa si el nodo esta vacÌo y retorna 0 como el balance.
+    if(nod == NULL) //Revisa si el nodo esta vac√≠o y retorna 0 como el balance.
         return 0;
     return (altura(nod->left) - altura(nod->right)); //Retorna la diferencia entre las alturas.
 }
 
-//Realiza la rotaciÛn a derecha dentro del ·rbol AVL.
+//Realiza la rotaci√≥n a derecha dentro del √°rbol AVL.
 
-NodeAVL *rotacionDerecha(NodeAVL *nodo1) //La funciÛn lleva el nodo a rotar.
+NodeAVL *rotacionDerecha(NodeAVL *nodo1) //La funci√≥n lleva el nodo a rotar.
 {
-    NodeAVL *nodo2 = nodo1->left; //Cea un nuevo puntero y lo establece en el hijo izquierdo del nodo a rotar. Esto debido a que se va a realizar una rotaciÛn a la derecha, por lo que se requiere que este nodo sea la nueva raÌz del ·rbol.
-    NodeAVL *nodoAux = nodo2->right; //Se crea un nodo temporal y se establece como el hijo derecho del nodo a rotar. Esto debido a que el nodo temporal se va a convertir en el hijo izquierdo del nodo a rotar, ya que es m·s pequeÒo que la nueva raÌz del ·rbol pero m·s grande que los dem·s nodos del sub·rbol izquierdo.
+    NodeAVL *nodo2 = nodo1->left; //Cea un nuevo puntero y lo establece en el hijo izquierdo del nodo a rotar. Esto debido a que se va a realizar una rotaci√≥n a la derecha, por lo que se requiere que este nodo sea la nueva ra√≠z del √°rbol.
+    NodeAVL *nodoAux = nodo2->right; //Se crea un nodo temporal y se establece como el hijo derecho del nodo a rotar. Esto debido a que el nodo temporal se va a convertir en el hijo izquierdo del nodo a rotar, ya que es m√°s peque√±o que la nueva ra√≠z del √°rbol pero m√°s grande que los dem√°s nodos del sub√°rbol izquierdo.
 
-    nodo2->right = nodo1; //Se establece el hijo derecho de la nueva raÌz en el nodo a rotar.
+    nodo2->right = nodo1; //Se establece el hijo derecho de la nueva ra√≠z en el nodo a rotar.
     nodo1->left = nodoAux; //Se establece el hijo izquierdo del nodo a rotar en el nodo temporal.
 
     //Se actualizan las alturas de los nodos.
@@ -128,10 +131,10 @@ NodeAVL *rotacionDerecha(NodeAVL *nodo1) //La funciÛn lleva el nodo a rotar.
     nodo1->altura = maximo(altura(nodo1->left), altura(nodo1->right)) + 1;
     nodo2->altura = maximo(altura(nodo2->left), altura(nodo2->right)) + 1;
 
-    return nodo2; //Se retorna el puntero al nuevo nodo raÌz.
+    return nodo2; //Se retorna el puntero al nuevo nodo ra√≠z.
 };
 
-//Realiza la rotaciÛn a izqueirda dentro del ·rbol AVL. Sigue los mismos pasos que la rotaciÛn a derecha.
+//Realiza la rotaci√≥n a izqueirda dentro del √°rbol AVL. Sigue los mismos pasos que la rotaci√≥n a derecha.
 
 NodeAVL *rotacionIzquierda(NodeAVL *nodo1)
 {
@@ -147,11 +150,11 @@ NodeAVL *rotacionIzquierda(NodeAVL *nodo1)
     return nodo2;
 };
 
-//FunciÛn para imprimir el ·rbol en PreOrder
+//Funci√≥n para imprimir el √°rbol en PreOrder
 
 void preOrder(NodeAVL *rootAVL)
 {
-    if(rootAVL != nullptr) //Si el ·rbol es distinto a vacÌo que lo imprima.
+    if(rootAVL != nullptr) //Si el √°rbol es distinto a vac√≠o que lo imprima.
     {
         cout << rootAVL->data << " -> ";
         preOrder(rootAVL->left);
@@ -159,18 +162,18 @@ void preOrder(NodeAVL *rootAVL)
     }
 }
 
-//FunciÛn para insertar dentro del ·rbol AVL.
+//Funci√≥n para insertar dentro del √°rbol AVL.
 
 NodeAVL* insertarAVL(NodeAVL* nodo, int data)
 {
-    //Se usa el mismo tipo de inserciÛn que en el ·rbol BST pero realiza rotaciones para mantener el factor de balance entre -1 y 1
+    //Se usa el mismo tipo de inserci√≥n que en el √°rbol BST pero realiza rotaciones para mantener el factor de balance entre -1 y 1
 
-    if(nodo == nullptr) //Si el ·rbol esta vacÌo, crea un nuevo nodo y lo retorna.
+    if(nodo == nullptr) //Si el √°rbol esta vac√≠o, crea un nuevo nodo y lo retorna.
         return(nuevoNodeAVL(data));
 
-    if(data < nodo->data) //Si el valor es menor que el nodo actual, lo inserta en el sub·rbol izquierdo.
+    if(data < nodo->data) //Si el valor es menor que el nodo actual, lo inserta en el sub√°rbol izquierdo.
         nodo->left = insertarAVL(nodo->left, data);
-    else if(data > nodo->data) //Si el valor es mayor que el nodo actual, lo inserta en el sub·rbol derecho.
+    else if(data > nodo->data) //Si el valor es mayor que el nodo actual, lo inserta en el sub√°rbol derecho.
         nodo->right = insertarAVL(nodo->right, data);
     else //Si los valores son iguales retorna el nodo para evitar duplicados.
         return nodo;
@@ -178,22 +181,22 @@ NodeAVL* insertarAVL(NodeAVL* nodo, int data)
     //Actualiza la altura del nodo actual.
     nodo->altura = 1 + maximo(altura(nodo->left), altura(nodo->right));
 
-    //Calcula el factor de balance del ·rbol haciendo uso de la funciÛn.
+    //Calcula el factor de balance del √°rbol haciendo uso de la funci√≥n.
     int balanceArbol = getBalance(nodo);
 
-    if((balanceArbol > 1) && (data < nodo->left->data)) //Si el balance es mayor a 1 y el nuevo valor es menor al del hijo izquierdo, realiza una rotaciÛn a derecha.
+    if((balanceArbol > 1) && (data < nodo->left->data)) //Si el balance es mayor a 1 y el nuevo valor es menor al del hijo izquierdo, realiza una rotaci√≥n a derecha.
         return rotacionDerecha(nodo);
 
-    if((balanceArbol < -1) && (data > nodo->right->data)) //Si el balance es menor a -1 y el nuevo valor es mayor al del hijo derecho, realiza una rotaciÛn a izquierda.
+    if((balanceArbol < -1) && (data > nodo->right->data)) //Si el balance es menor a -1 y el nuevo valor es mayor al del hijo derecho, realiza una rotaci√≥n a izquierda.
         return rotacionIzquierda(nodo);
 
-    if((balanceArbol > 1) && (data > nodo->left->data)) //Si el balance es mayor a 1 y el nuevo valor es mayor al hijo izquierdo, se realiza una rotaciÛn a izquierda y a derecha.
+    if((balanceArbol > 1) && (data > nodo->left->data)) //Si el balance es mayor a 1 y el nuevo valor es mayor al hijo izquierdo, se realiza una rotaci√≥n a izquierda y a derecha.
     {
         nodo->left = rotacionIzquierda(nodo->left);
         return rotacionDerecha(nodo);
     }
 
-    if((balanceArbol < -1) && (data < nodo->right->data)) //Si el balance es menor a -1 y el nuevo valor es menor al hijo derecho, se realiza una rotaciÛn a derecha y a izquierda.
+    if((balanceArbol < -1) && (data < nodo->right->data)) //Si el balance es menor a -1 y el nuevo valor es menor al hijo derecho, se realiza una rotaci√≥n a derecha y a izquierda.
     {
         nodo->right = rotacionDerecha(nodo->right);
         return rotacionIzquierda(nodo);
@@ -202,7 +205,7 @@ NodeAVL* insertarAVL(NodeAVL* nodo, int data)
     return nodo;
 }
 
-//FunciÛn que retorna el valor mÌnimo dentro del ·rbol.
+//Funci√≥n que retorna el valor m√≠nimo dentro del √°rbol.
 
 NodeAVL *valorMinimo(NodeAVL* nodo)
 {
@@ -211,23 +214,23 @@ NodeAVL *valorMinimo(NodeAVL* nodo)
     while (minimo->left != nullptr) //El ciclo continua mientras no haya encontrado en hijo null en el puntero a izquierda.
         minimo = minimo->left;
 
-    return minimo; //Retorna el valor mÌnimo.
+    return minimo; //Retorna el valor m√≠nimo.
 }
 
-//FunciÛn para eliminar datos realizando un proceso de rotaciones.
+//Funci√≥n para eliminar datos realizando un proceso de rotaciones.
 
 NodeAVL *eliminarNodoAVL(NodeAVL* rootAVL, int data)
 {
-    if(rootAVL == nullptr) //Revisa si el ·rbol esta vacÌo, si lo est· retorna el ·rbol.
+    if(rootAVL == nullptr) //Revisa si el √°rbol esta vac√≠o, si lo est√° retorna el √°rbol.
         return rootAVL;
 
-    if(data < rootAVL->data) //Si el valor a eliminar es menor al dato en el ·rbol.
+    if(data < rootAVL->data) //Si el valor a eliminar es menor al dato en el √°rbol.
         rootAVL->left = eliminarNodoAVL(rootAVL->left, data);
 
-    else if(data > rootAVL->data) //Si el valor a eliminar es mayor al dato en el ·rbol.
+    else if(data > rootAVL->data) //Si el valor a eliminar es mayor al dato en el √°rbol.
         rootAVL->right = eliminarNodoAVL(rootAVL->right, data);
 
-    else //Si el valor del dato es igual a la raÌz del nodo.
+    else //Si el valor del dato es igual a la ra√≠z del nodo.
     {
         if((rootAVL->left == nullptr) || (rootAVL->right == nullptr)) //Revisa si el nodo tiene 0 o un hijo.
         {
@@ -247,15 +250,15 @@ NodeAVL *eliminarNodoAVL(NodeAVL* rootAVL, int data)
                 rootAVL = nullptr;
             }
             else //Si tiene un hijo
-                *rootAVL = *temporal; //Copia el contenido del hijo que no esta vacÌo.
+                *rootAVL = *temporal; //Copia el contenido del hijo que no esta vac√≠o.
 
             free(temporal);
         }
         else
         {
-            //Nodo que tiene dos hijos, obtiene el valor mÌnimo para ser el sucesor.
+            //Nodo que tiene dos hijos, obtiene el valor m√≠nimo para ser el sucesor.
             NodeAVL *temporal = valorMinimo(rootAVL->right);
-            //Copia el valor mÌnimo del sucesor.
+            //Copia el valor m√≠nimo del sucesor.
             rootAVL->data = temporal->data;
             //Elimina el sucesor para evitar duplicaciones.
             rootAVL->right = eliminarNodoAVL(rootAVL->right, temporal->data);
@@ -268,10 +271,10 @@ NodeAVL *eliminarNodoAVL(NodeAVL* rootAVL, int data)
     //Se actualiza el valor de la altura.
     rootAVL->altura = 1 + maximo(altura(rootAVL->left), altura(rootAVL->right));
 
-    //Se obtiene el valor del balanceo del ·rbol.
+    //Se obtiene el valor del balanceo del √°rbol.
     int balanceo = getBalance(rootAVL);
 
-    //En caso de que no este balanceado se realiza un proceso de rotaciÛn (explicado en inserciÛn).
+    //En caso de que no este balanceado se realiza un proceso de rotaci√≥n (explicado en inserci√≥n).
     if((balanceo > 1) && (getBalance(rootAVL->left) >= 0))
         return rotacionDerecha(rootAVL);
 
@@ -316,7 +319,7 @@ float mediana(NodeAVL* rootAVL, int contador)
             else if(contador % 2 == 0 && contadorActual == (contador/2) + 1)
                 return (prev->data + actual->data)/2;
 
-            //Actualizar prev con el n˙mero par de los nodos
+            //Actualizar prev con el n√∫mero par de los nodos
 
             prev = actual;
 
@@ -355,7 +358,7 @@ float mediana(NodeAVL* rootAVL, int contador)
                 else if(contador % 2 == 0 && contadorActual == (contador/2)+1)
                     return(prev->data + actual->data)/2;
 
-                //Actualizar nodo prev en caso de n˙mero par de nodos
+                //Actualizar nodo prev en caso de n√∫mero par de nodos
 
                 prev = actual;
                 actual = actual->right;
